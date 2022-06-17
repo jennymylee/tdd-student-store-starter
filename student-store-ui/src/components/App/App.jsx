@@ -1,6 +1,7 @@
 import * as React from "react";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
+import NotFound from "../NotFound/NotFound";
 import Home from "../Home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -93,7 +94,7 @@ export default function App() {
                 </>
               }
             />
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </BrowserRouter>
