@@ -6,6 +6,8 @@ export default function ProductGrid({
   products,
   handleAddItemToCart,
   handleRemoveItemToCart,
+  isFetching,
+  setIsFetching,
 }) {
   const [currentTab, setCurrentTab] = React.useState("all");
   const [searchValue, setSearchValue] = React.useState("");
@@ -28,7 +30,6 @@ export default function ProductGrid({
 
   React.useEffect(() => {
     setSearchValue("");
-    console.log(currentTab);
   }, [currentTab]);
   return (
     <div className="product-grid">
@@ -143,6 +144,8 @@ export default function ProductGrid({
                 handleAddItemToCart={handleAddItemToCart}
                 handleRemoveItemToCart={handleRemoveItemToCart}
                 showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
               />
             ))}
           {currentTab == "clothing" &&
@@ -155,6 +158,8 @@ export default function ProductGrid({
                 handleAddItemToCart={handleAddItemToCart}
                 handleRemoveItemToCart={handleRemoveItemToCart}
                 showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
               />
             ))}
           {currentTab == "food" &&
@@ -167,6 +172,8 @@ export default function ProductGrid({
                 handleAddItemToCart={handleAddItemToCart}
                 handleRemoveItemToCart={handleRemoveItemToCart}
                 showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
               />
             ))}
           {currentTab == "accessories" &&
@@ -179,6 +186,8 @@ export default function ProductGrid({
                 handleAddItemToCart={handleAddItemToCart}
                 handleRemoveItemToCart={handleRemoveItemToCart}
                 showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
               />
             ))}
           {currentTab == "tech" &&
@@ -191,6 +200,8 @@ export default function ProductGrid({
                 handleAddItemToCart={handleAddItemToCart}
                 handleRemoveItemToCart={handleRemoveItemToCart}
                 showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
               />
             ))}
           {currentTab == "" &&
@@ -203,6 +214,8 @@ export default function ProductGrid({
                 handleAddItemToCart={handleAddItemToCart}
                 handleRemoveItemToCart={handleRemoveItemToCart}
                 showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
               />
             ))}
           {searchProducts.length == 0 && (

@@ -10,6 +10,8 @@ export default function Home({
   products,
   handleAddItemToCart,
   handleRemoveItemToCart,
+  isFetching,
+  setIsFetching,
 }) {
   return (
     <div className="home">
@@ -19,6 +21,8 @@ export default function Home({
         products={products}
         handleAddItemToCart={handleAddItemToCart}
         handleRemoveItemToCart={handleRemoveItemToCart}
+        isFetching={isFetching}
+        setIsFetching={setIsFetching}
       />
       <About />
       <Contact />

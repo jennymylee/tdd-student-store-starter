@@ -2,9 +2,12 @@ import * as React from "react";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import NotFound from "../NotFound/NotFound";
+import ProductDetail from "../ProductDetail/ProductDetail";
 import Home from "../Home/Home";
+import SubNavbar from "../SubNavbar/SubNavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Hero from "../Hero/Hero";
 import axios from "axios";
 
 export default function App() {
@@ -22,7 +25,6 @@ export default function App() {
       .get("https://codepath-store-api.herokuapp.com/store")
       .then((response) => {
         setProducts(response.data.products);
-        console.log(response.data.products);
       })
       .catch((e) => {
         setError(e);
@@ -75,9 +77,19 @@ export default function App() {
               element={
                 <>
                   <Navbar />
-                  <Sidebar />
+                  <Sidebar
+                    isOpen={isOpen}
+                    shoppingCart={shoppingCart}
+                    products={products}
+                    checkoutForm={checkoutForm}
+                    handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+                    handleOnsubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                    handleOnToggle={handleOnToggle}
+                  />
                   <Home
                     products={products}
+                    isFetching={isFetching}
+                    setIsFetching={setIsFetching}
                     handleAddItemToCart={handleAddItemToCart}
                     handleRemoveItemToCart={handleRemoveItemToCart}
                   />
@@ -89,8 +101,23 @@ export default function App() {
               element={
                 <>
                   <Navbar />
-                  <Sidebar />
-                  {/* add productDetail component */}
+                  <Sidebar
+                    isOpen={isOpen}
+                    shoppingCart={shoppingCart}
+                    products={products}
+                    checkoutForm={checkoutForm}
+                    handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+                    handleOnsubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                    handleOnToggle={handleOnToggle}
+                  />
+                  <Hero />
+                  <SubNavbar />
+                  <ProductDetail
+                    isFetching={isFetching}
+                    setIsFetching={setIsFetching}
+                    handleAddItemToCart={handleAddItemToCart}
+                    handleRemoveItemToCart={handleRemoveItemToCart}
+                  />
                 </>
               }
             />

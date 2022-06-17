@@ -9,13 +9,23 @@ export default function ProductCard({
   handleAddItemToCart,
   handleRemoveItemToCart,
   showDescription,
+  isFetching,
+  setIsFetching,
 }) {
   return (
     <div className="product-card">
       <div className="media">
-        <Link to={`/products/${product.id}`}>
+        {showDescription ? (
           <img className="pc-image" src={product.image} />
-        </Link>
+        ) : (
+          <Link to={`/products/${product.id}`}>
+            <img
+              className="pc-image"
+              src={product.image}
+              onClick={() => setIsFetching(true)}
+            />
+          </Link>
+        )}
       </div>
       <div className="product-info">
         <div className="pc-data">
@@ -94,6 +104,7 @@ export default function ProductCard({
           </div>
           <p className="product-price">${product.price.toFixed(2)}</p>
         </div>
+
         {showDescription && (
           <p className="product-description">{product.description}</p>
         )}

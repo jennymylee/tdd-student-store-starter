@@ -3,13 +3,10 @@ import "./SubNavbar.css";
 
 export default function SubNavbar() {
   const [currentTab, setCurrentTab] = React.useState("sn-1");
-  //   document.getElementById(currentTab).style.borderBottom = "solid 2px #00c385";
-  const switchTab = (tabId) => {
-    document.getElementById(currentTab).style.borderBottom = "none";
-    setCurrentTab(tabId);
-    console.log(currentTab);
-    document.getElementById(tabId).style.borderBottom = "solid 2px #00c385";
-  };
+  const [searchValue, setSearchValue] = React.useState("");
+  React.useEffect(() => {
+    setSearchValue("");
+  }, [currentTab]);
   return (
     <div className="sub-navbar">
       <div className="sn-content">
@@ -20,7 +17,11 @@ export default function SubNavbar() {
               type="text"
               name="search"
               placeholder="Search"
-              value
+              value={searchValue}
+              onChange={(event) => {
+                setSearchValue(event.target.value);
+                setCurrentTab("");
+              }}
             ></input>
             <i class="material-icons">search</i>
           </div>
@@ -41,42 +42,63 @@ export default function SubNavbar() {
           <div className="sn-headings">
             <button
               className="sn-h"
-              id="sn-1"
-              onChange={() => switchTab("sn-1")}
+              style={
+                currentTab == "all"
+                  ? { borderBottom: "solid 2px #00c385" }
+                  : null
+              }
+              id="all"
+              onClick={() => setCurrentTab("all")}
             >
               All Categories
             </button>
             <button
               className="sn-h"
-              id="sn-2"
-              onClick={() => switchTab("sn-2")}
+              id="clothing"
+              style={
+                currentTab == "clothing"
+                  ? { borderBottom: "solid 2px #00c385" }
+                  : null
+              }
+              onClick={() => setCurrentTab("clothing")}
             >
               Clothing
             </button>
             <button
               className="sn-h"
-              id="sn-3"
+              id="food"
+              style={
+                currentTab == "food"
+                  ? { borderBottom: "solid 2px #00c385" }
+                  : null
+              }
               onClick={() => {
-                switchTab("sn-3");
-                document.getElementById(currentTab).style.borderBottom = "none";
-                setCurrentTab("sn-3");
-                document.getElementById(tabId).style.borderBottom =
-                  "solid 2px #00c385";
+                setCurrentTab("food");
               }}
             >
               Food
             </button>
             <button
               className="sn-h"
-              id="sn-4"
-              onClick={() => switchTab("sn-4")}
+              id="accessories"
+              style={
+                currentTab == "accessories"
+                  ? { borderBottom: "solid 2px #00c385" }
+                  : null
+              }
+              onClick={() => setCurrentTab("accessories")}
             >
               Accessories
             </button>
             <button
               className="sn-h"
-              id="sn-5"
-              onClick={() => switchTab("sn-5")}
+              id="tech"
+              style={
+                currentTab == "tech"
+                  ? { borderBottom: "solid 2px #00c385" }
+                  : null
+              }
+              onClick={() => setCurrentTab("tech")}
             >
               Tech
             </button>
