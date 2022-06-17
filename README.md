@@ -246,28 +246,6 @@ The following specifications were met on the Express backend and the React front
   - [ ] Create a single `GET` request handler at the `/` endpoint. It should respond to all `GET` requests with a JSON object and a `200` status code. The JSON response should contain a single key of `ping` that stores the string value: `pong`. For example: `{ "ping": "pong" }`.
   - [ ] Have a `server.js` file that starts the app by listening on port `3001`.
 
-### Reflection
-
-* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
-
-  The topics discussed in your labs prepare you to complete the assignment. At first, I felt unprepared to create a popup. But after some research, I realized that I already possessed the basic building blocks and JavaScript knowledge needed to complete this stretch feature.
-
-* If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
-  
-  If I had more time, I would add more styling to the ui and to the buttons on the website.
-
-* Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
-
-  Regarding my project demo, during the first few takes, most of my features worked as intended. While recording, I noticed that I did not set a default image for my backdrop image in the popups. I added this feature before recording my final take. I noticed that some of my peers added a nav bar to their websites; This is something I would like to implement in the future.
-
-### Open-source libraries used
-
-- no open-source libraries were used
-
-### Shout out
-
-- Shout out to Rebecca for helping me with my bugs!
-
 **Models** - The API should use a `Store` model that handles the following
   - [ ] List all products currently in the `db.json` file
   - [ ] Fetch a single product by its id
@@ -300,3 +278,26 @@ The following specifications were met on the Express backend and the React front
         - **optional**:
           - [ ] `receipt` - text describing the order (what might go on a receipt)
       - [ ] It should then send a JSON response back to the client with the new purchase like so: `{ "purchase": purchase }`. The response should have a `201` status code for a resource created action.
+
+
+### Reflection
+
+* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
+
+  The topics discussed in your labs prepare you to complete the assignment. At first, I felt unprepared to create a popup. But after some research, I realized that I already possessed the basic building blocks and JavaScript knowledge needed to complete this stretch feature.
+
+* If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
+  
+  If I had more time, I would add more styling to the ui and to the buttons on the website.
+
+* Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
+
+  Regarding my project demo, during the first few takes, most of my features worked as intended. While recording, I noticed that I did not set a default image for my backdrop image in the popups. I added this feature before recording my final take. I noticed that some of my peers added a nav bar to their websites; This is something I would like to implement in the future.
+
+### Open-source libraries used
+
+- no open-source libraries were used
+
+### Shout out
+
+- Shout out to Rebecca for helping me with my bugs!
