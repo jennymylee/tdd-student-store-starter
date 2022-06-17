@@ -9,7 +9,7 @@ import Contact from "../Contact/Contact";
 export default function Home({
   products,
   handleAddItemToCart,
-  handleRemoveItemToCart,
+  handleRemoveItemFromCart,
   isFetching,
   setIsFetching,
 }) {
@@ -20,7 +20,7 @@ export default function Home({
       <ProductGrid
         products={products}
         handleAddItemToCart={handleAddItemToCart}
-        handleRemoveItemToCart={handleRemoveItemToCart}
+        handleRemoveItemFromCart={handleRemoveItemFromCart}
         isFetching={isFetching}
         setIsFetching={setIsFetching}
       />

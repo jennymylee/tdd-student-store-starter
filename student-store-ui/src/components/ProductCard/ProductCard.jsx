@@ -7,7 +7,7 @@ export default function ProductCard({
   productId,
   quantity,
   handleAddItemToCart,
-  handleRemoveItemToCart,
+  handleRemoveItemFromCart,
   showDescription,
   isFetching,
   setIsFetching,
@@ -118,7 +118,7 @@ export default function ProductCard({
           <div className="pc-right-col">
             <button
               className="remove"
-              onClick={() => handleRemoveItemToCart(productId)}
+              onClick={() => handleRemoveItemFromCart(productId)}
             >
               <i class="material-icons">remove</i>
             </button>

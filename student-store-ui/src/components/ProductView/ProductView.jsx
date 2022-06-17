@@ -7,7 +7,7 @@ export default function ProductView({
   productId,
   quantity,
   handleAddItemToCart,
-  handleRemoveItemToCart,
+  handleRemoveItemFromCart,
   isFetching,
   setIsFetching,
 }) {
@@ -20,7 +20,7 @@ export default function ProductView({
           productId={productId}
           quantity={quantity}
           handleAddItemToCart={handleAddItemToCart}
-          handleRemoveItemToCart={handleRemoveItemToCart}
+          handleRemoveItemFromCart={handleRemoveItemFromCart}
           showDescription={true}
           isFetching={isFetching}
           setIsFetching={setIsFetching}

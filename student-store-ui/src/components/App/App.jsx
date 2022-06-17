@@ -61,7 +61,7 @@ export default function App() {
     // return ;
     //  It should add the price of the product to the total price of the shoppingCart.
   };
-  const handleRemoveItemToCart = (productId) => {};
+  const handleRemoveItemFromCart = (productId) => {};
   const handleOnCheckoutFormChange = ({ name, value }) => {
     // setCheckoutForm()
   };
@@ -91,7 +91,7 @@ export default function App() {
                     isFetching={isFetching}
                     setIsFetching={setIsFetching}
                     handleAddItemToCart={handleAddItemToCart}
-                    handleRemoveItemToCart={handleRemoveItemToCart}
+                    handleRemoveItemFromCart={handleRemoveItemFromCart}
                   />
                 </>
               }
@@ -116,7 +116,7 @@ export default function App() {
                     isFetching={isFetching}
                     setIsFetching={setIsFetching}
                     handleAddItemToCart={handleAddItemToCart}
-                    handleRemoveItemToCart={handleRemoveItemToCart}
+                    handleRemoveItemFromCart={handleRemoveItemFromCart}
                   />
                 </>
               }

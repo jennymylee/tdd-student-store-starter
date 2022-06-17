@@ -8,7 +8,7 @@ import axios from "axios";
 
 export default function ProductDetail({
   handleAddItemToCart,
-  handleRemoveItemToCart,
+  handleRemoveItemFromCart,
   isFetching,
   setIsFetching,
 }) {
@@ -39,7 +39,7 @@ export default function ProductDetail({
             productId={productId}
             quantity={2}
             handleAddItemToCart={handleAddItemToCart}
-            handleRemoveItemToCart={handleRemoveItemToCart}
+            handleRemoveItemFromCart={handleRemoveItemFromCart}
             isFetching={isFetching}
             setIsFetching={setIsFetching}
           />
