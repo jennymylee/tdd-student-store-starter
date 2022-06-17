@@ -4,7 +4,7 @@
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
-// Include your gif here
+![](walkthrough.gif)
 
 ### Application Features
 
@@ -252,8 +252,8 @@ The following specifications were met on the Express backend and the React front
   - [ ] Create a purchase order
 
 **Routes** - The API should contain a route mounted at the `/store` endpoint
-  - [ ] It should respond to `GET` requests to `/store` with an array of all products in the store in this format: `{ "products": products }`
-  - [ ] It should respond to `GET` requests to `/store/:productId` with a single product based on the product's id using this JSON format: `{ "product": product }`
+  - [X] It should respond to `GET` requests to `/store` with an array of all products in the store in this format: `{ "products": products }`
+  - [X] It should respond to `GET` requests to `/store/:productId` with a single product based on the product's id using this JSON format: `{ "product": product }`
   - [ ] It should allow `POST` requests to the `/store` endpoint:
     - [ ] The endpoint should create purchase orders for users and save them to the `db.json` file
     - [ ] The endpoint should accept a request body that contains `shoppingCart` and `user` fields.
