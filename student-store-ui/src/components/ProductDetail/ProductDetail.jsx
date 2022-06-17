@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./ProductDetail.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
 import ProductView from "../ProductView/ProductView";
 import NotFound from "../NotFound/NotFound";
 import axios from "axios";
@@ -13,6 +14,8 @@ export default function ProductDetail({
 }) {
   const [product, setProduct] = React.useState(null);
   const { productId } = useParams();
+
+  let navigate = useNavigate();
 
   React.useEffect(() => {
     axios
@@ -40,7 +43,9 @@ export default function ProductDetail({
             isFetching={isFetching}
             setIsFetching={setIsFetching}
           />
-        ) : null}
+        ) : (
+          navigate("/pageNotFound")
+        )}
       </div>
     </div>
   );
