@@ -169,7 +169,7 @@ The following specifications were met on the Express backend and the React front
     - `showDescription` - boolean
   - [X] Should render the `name` of the product inside an element with the `className` of `product-name`
   - [X] Should render the `price` of the product inside an element with the `className` of `product-price`. The price should formatted so that it starts with a `$`, and has **at least one** integer digit, along with **exactly two** decimal digits. Examples - `$22.99`, `$860.20`, and `$0.50`
-  - [ ] If the `showDescription` prop is set to `true`, it should render the `description` of the product inside an element with the `className` of `product-description`.
+  - [X] If the `showDescription` prop is set to `true`, it should render the `description` of the product inside an element with the `className` of `product-description`.
   - [X] Should render an `img` element for the product:
     - [X] The `img` element should have a `src` attribute to set to the `image` property of the `product` prop.
     - [X] The `img` element should be wrapped in a `Link` component from `react-router-dom`.
