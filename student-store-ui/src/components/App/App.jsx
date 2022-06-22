@@ -31,37 +31,62 @@ export default function App() {
       });
   }, []);
 
+  const getQuantity = (productId) => {
+    for (var i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].itemId == productId) {
+        return shoppingCart[i].quantity;
+      }
+    }
+    return 0;
+  };
+
   const handleOnToggle = () => {
     setIsOpen(!isOpen);
   };
 
   const handleAddItemToCart = (productId) => {
-    //     It should accept a single argument - productId
-    //  It should add that product to the shoppingCart if it doesn't exist, and set its quantity to 1.
-    //  If it does exist, it should increase the quantity by 1.
-    // if (
-    //   shoppingCart.some((el) => {
-    //     return el.itemId == productId;
-    //   })
-    // ) {
-    // }
-    // for (var i = 0; i < shoppingCart.length; i++) {
-    //   if (shoppingCart[i][itemId] == productId) {
-    //     setShoppingCart(
-    //       shoppingCart
-    //         .slice(0, i)
-    //         .concat(
-    //           [{ itemId: productId, quantity: shoppingCart[i][quantity] + 1 }],
-    //           shoppingCart.slice(i + 1, -1)
-    //         )
-    //     );
-    //     return;
-    //   }
-    // }
-    // return ;
+    let scCopy = shoppingCart;
+    let scCopy2 = shoppingCart;
+    for (var i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].itemId == productId) {
+        let newSC = shoppingCart
+          .slice(0, i)
+          .concat([
+            { itemId: productId, quantity: shoppingCart[i].quantity + 1 },
+          ]);
+        newSC = newSC.concat(scCopy.slice(i + 1));
+        setShoppingCart(newSC);
+        console.log("it is in", newSC);
+        return;
+      }
+    }
+    scCopy.push({ itemId: productId, quantity: 1 });
+    setShoppingCart(scCopy);
+    console.log("add", shoppingCart);
     //  It should add the price of the product to the total price of the shoppingCart.
   };
-  const handleRemoveItemFromCart = (productId) => {};
+  const handleRemoveItemFromCart = (productId) => {
+    let scCopy = shoppingCart;
+    let scCopy2 = shoppingCart;
+    for (var i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].itemId == productId) {
+        if (shoppingCart[i].itemId !== 1) {
+          // if quantity > 1 before decrement
+          let newSC = scCopy2
+            .slice(0, i)
+            .concat([
+              { itemId: productId, quantity: shoppingCart[i].quantity - 1 },
+            ]);
+          newSC = newSC.concat(scCopy.slice(i + 1));
+          setShoppingCart(newSC);
+        } else {
+          //remove item from shopping cart
+          let newSC = scCopy2.slice(0, i).concat(scCopy.slice(i + 1));
+          setShoppingCart(newSC);
+        }
+      }
+    }
+  };
   const handleOnCheckoutFormChange = ({ name, value }) => {
     // setCheckoutForm()
   };
@@ -92,6 +117,7 @@ export default function App() {
                     setIsFetching={setIsFetching}
                     handleAddItemToCart={handleAddItemToCart}
                     handleRemoveItemFromCart={handleRemoveItemFromCart}
+                    getQuantity={getQuantity}
                   />
                 </>
               }
@@ -117,6 +143,7 @@ export default function App() {
                     setIsFetching={setIsFetching}
                     handleAddItemToCart={handleAddItemToCart}
                     handleRemoveItemFromCart={handleRemoveItemFromCart}
+                    getQuantity={getQuantity}
                   />
                 </>
               }

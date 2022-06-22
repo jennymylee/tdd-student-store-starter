@@ -5,9 +5,10 @@ import ProductCard from "../ProductCard/ProductCard";
 export default function ProductGrid({
   products,
   handleAddItemToCart,
-  handleRemoveItemToCart,
+  handleRemoveItemFromCart,
   isFetching,
   setIsFetching,
+  getQuantity,
 }) {
   const [currentTab, setCurrentTab] = React.useState("all");
   const [searchValue, setSearchValue] = React.useState("");
@@ -140,9 +141,9 @@ export default function ProductGrid({
                 key={i}
                 product={product}
                 productId={product.id}
-                quantity={2}
+                quantity={getQuantity(product.id)}
                 handleAddItemToCart={handleAddItemToCart}
-                handleRemoveItemToCart={handleRemoveItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
@@ -154,9 +155,9 @@ export default function ProductGrid({
                 key={i}
                 product={product}
                 productId={product.id}
-                quantity={2}
+                quantity={getQuantity(product.id)}
                 handleAddItemToCart={handleAddItemToCart}
-                handleRemoveItemToCart={handleRemoveItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
@@ -168,9 +169,9 @@ export default function ProductGrid({
                 key={i}
                 product={product}
                 productId={product.id}
-                quantity={2}
+                quantity={getQuantity(product.id)}
                 handleAddItemToCart={handleAddItemToCart}
-                handleRemoveItemToCart={handleRemoveItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
@@ -182,9 +183,9 @@ export default function ProductGrid({
                 key={i}
                 product={product}
                 productId={product.id}
-                quantity={2}
+                quantity={getQuantity(product.id)}
                 handleAddItemToCart={handleAddItemToCart}
-                handleRemoveItemToCart={handleRemoveItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
@@ -196,9 +197,9 @@ export default function ProductGrid({
                 key={i}
                 product={product}
                 productId={product.id}
-                quantity={2}
+                quantity={getQuantity(product.id)}
                 handleAddItemToCart={handleAddItemToCart}
-                handleRemoveItemToCart={handleRemoveItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
@@ -210,9 +211,9 @@ export default function ProductGrid({
                 key={i}
                 product={product}
                 productId={product.id}
-                quantity={2}
+                quantity={getQuantity(product.id)}
                 handleAddItemToCart={handleAddItemToCart}
-                handleRemoveItemToCart={handleRemoveItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}

@@ -12,6 +12,7 @@ export default function Home({
   handleRemoveItemFromCart,
   isFetching,
   setIsFetching,
+  getQuantity,
 }) {
   return (
     <div className="home">
@@ -23,6 +24,7 @@ export default function Home({
         handleRemoveItemFromCart={handleRemoveItemFromCart}
         isFetching={isFetching}
         setIsFetching={setIsFetching}
+        getQuantity={getQuantity}
       />
       <About />
       <Contact />

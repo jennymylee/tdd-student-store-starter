@@ -11,6 +11,7 @@ export default function ProductDetail({
   handleRemoveItemFromCart,
   isFetching,
   setIsFetching,
+  getQuantity,
 }) {
   const [product, setProduct] = React.useState(null);
   const { productId } = useParams();
@@ -29,6 +30,8 @@ export default function ProductDetail({
       });
   }, []);
 
+  let currentQuantity = getQuantity(productId);
+
   return (
     <div className="product-detail">
       <div className="pd-content">
@@ -37,7 +40,7 @@ export default function ProductDetail({
           <ProductView
             product={product}
             productId={productId}
-            quantity={2}
+            quantity={currentQuantity}
             handleAddItemToCart={handleAddItemToCart}
             handleRemoveItemFromCart={handleRemoveItemFromCart}
             isFetching={isFetching}
