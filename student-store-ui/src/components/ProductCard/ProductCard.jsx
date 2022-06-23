@@ -13,7 +13,7 @@ export default function ProductCard({
   setIsFetching,
 }) {
   const [currentQuantity, setCurrentQuantity] = React.useState(quantity);
-  console.log("q", quantity);
+
   return (
     <div className="product-card">
       <div className="media">
@@ -118,7 +118,7 @@ export default function ProductCard({
               setCurrentQuantity(currentQuantity + 1);
             }}
           >
-            <i class="material-icons">add</i>
+            <i className="material-icons">add</i>
           </button>
           <div className="pc-right-col">
             <button
@@ -130,7 +130,7 @@ export default function ProductCard({
                 }
               }}
             >
-              <i class="material-icons">remove</i>
+              <i className="material-icons">remove</i>
             </button>
             {currentQuantity !== 0 && (
               <span className="product-quantity">{currentQuantity}</span>

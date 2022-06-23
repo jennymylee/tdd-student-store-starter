@@ -1,5 +1,7 @@
 import * as React from "react";
 import "./Sidebar.css";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 export default function Sidebar({
   isOpen,
@@ -7,7 +9,7 @@ export default function Sidebar({
   products,
   checkoutForm,
   handleOnCheckoutFormChange,
-  handleOnsubmitCheckoutForm,
+  handleOnSubmitCheckoutForm,
   handleOnToggle,
 }) {
   return (
@@ -15,24 +17,36 @@ export default function Sidebar({
       {isOpen == false && (
         <div className="sidebar-closed">
           <button className="toggle-button" onClick={() => handleOnToggle()}>
-            <i class="material-icons md-48">arrow_forward</i>
+            <i className="material-icons md-48">arrow_forward</i>
           </button>
           <button className="toggle-buttons" onClick={() => handleOnToggle()}>
-            <i class="material-icons md-48">add_shopping_cart</i>
+            <i className="material-icons md-48">add_shopping_cart</i>
           </button>
           <button className="toggle-buttons" onClick={() => handleOnToggle()}>
-            <i class="material-icons md-48">monetization_on</i>
+            <i className="material-icons md-48">monetization_on</i>
           </button>
           <button className="toggle-buttons" onClick={() => handleOnToggle()}>
-            <i class="material-icons md-48">fact_check</i>
+            <i className="material-icons md-48">fact_check</i>
           </button>
         </div>
       )}
       {isOpen == true && (
         <div className="sidebar-open">
           <button className="toggle-button" onClick={() => handleOnToggle()}>
-            <i class="material-icons md-48">arrow_backward</i>
+            <i className="material-icons md-48">arrow_backward</i>
           </button>
+          <ShoppingCart
+            isOpen={isOpen}
+            products={products}
+            shoppingCart={shoppingCart}
+          />
+          <CheckoutForm
+            isOpen={isOpen}
+            shoppingCart={shoppingCart}
+            checkoutForm={checkoutForm}
+            handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+            handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+          />
         </div>
       )}
     </section>

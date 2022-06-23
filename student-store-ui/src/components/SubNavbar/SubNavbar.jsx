@@ -23,22 +23,22 @@ export default function SubNavbar() {
                 setCurrentTab("");
               }}
             ></input>
-            <i class="material-icons">search</i>
+            <i className="material-icons">search</i>
           </div>
           <div className="row-links">
             <span className="help">
-              <i class="material-icons">help</i>
+              <i className="material-icons">help</i>
               Help
             </span>
-            <div class="cart">
+            <div className="cart">
               <a className="cart-a" href="/">
-                My Cart<i class="material-icons">shopping_cart</i>
+                My Cart<i className="material-icons">shopping_cart</i>
               </a>
             </div>
           </div>
         </div>
         <div className="sn-row">
-          <i class="material-icons">menu</i>
+          <i className="material-icons">menu</i>
           <div className="sn-headings">
             <button
               className="sn-h"

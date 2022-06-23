@@ -18,15 +18,16 @@ export default function App() {
   //shoppingCart is an array of objects: [{itemId: 3, quantity: 2}]
   let [shoppingCart, setShoppingCart] = React.useState([]);
   //might change checkoutForm later
-  let [checkoutForm, setCheckoutForm] = React.useState(null);
+  let [checkoutForm, setCheckoutForm] = React.useState({ name: "", email: "" });
 
   React.useEffect(() => {
     axios
-      .get("https://codepath-store-api.herokuapp.com/store")
+      .get("http://localhost:3001/store")
       .then((response) => {
         setProducts(response.data.products);
       })
       .catch((e) => {
+        console.log(e);
         setError(e);
       });
   }, []);
@@ -70,7 +71,7 @@ export default function App() {
     let scCopy2 = shoppingCart;
     for (var i = 0; i < shoppingCart.length; i++) {
       if (shoppingCart[i].itemId == productId) {
-        if (shoppingCart[i].itemId !== 1) {
+        if (shoppingCart[i].quantity !== 1) {
           // if quantity > 1 before decrement
           let newSC = scCopy2
             .slice(0, i)
@@ -87,10 +88,27 @@ export default function App() {
       }
     }
   };
-  const handleOnCheckoutFormChange = ({ name, value }) => {
-    // setCheckoutForm()
+
+  const handleOnCheckoutFormChange = (name, value) => {
+    setCheckoutForm({ ...checkoutForm, [name]: value });
   };
-  const handleOnSubmitCheckoutForm = () => {};
+
+  const handleOnSubmitCheckoutForm = () => {
+    axios
+      .post("http://localhost:3001/store/checkout", {
+        user: { name: checkoutForm.name, email: checkoutForm.email },
+        shoppingCart: shoppingCart,
+      })
+      .then((response) => {
+        setShoppingCart([]);
+        setCheckoutForm({ email: "", name: "" });
+        console.log("post response", response);
+      })
+      .catch((e) => {
+        setError(e);
+        console.log(e);
+      });
+  };
 
   return (
     <div className="app">
@@ -108,7 +126,7 @@ export default function App() {
                     products={products}
                     checkoutForm={checkoutForm}
                     handleOnCheckoutFormChange={handleOnCheckoutFormChange}
-                    handleOnsubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                    handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
                     handleOnToggle={handleOnToggle}
                   />
                   <Home
@@ -133,7 +151,7 @@ export default function App() {
                     products={products}
                     checkoutForm={checkoutForm}
                     handleOnCheckoutFormChange={handleOnCheckoutFormChange}
-                    handleOnsubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                    handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
                     handleOnToggle={handleOnToggle}
                   />
                   <Hero />
