@@ -145,5 +145,83 @@
       "price": 999.99
     }
   ],
-  "purchases": []
+  "purchases": [
+    {
+      "id": null,
+      "name": "adfsg",
+      "email": "afs",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 3
+        }
+      ],
+      "total": 18.724875,
+      "createdAt": "2022-06-23T22:44:28.528Z"
+    },
+    {
+      "id": null,
+      "name": "df",
+      "email": "afs",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 3
+        }
+      ],
+      "total": 9.39375,
+      "createdAt": "2022-06-23T22:48:59.772Z"
+    },
+    {
+      "id": null,
+      "name": "jenny",
+      "email": "codepath@org",
+      "order": [
+        {
+          "itemId": 1,
+          "quantity": 2
+        },
+        {
+          "itemId": 3,
+          "quantity": 3
+        }
+      ],
+      "total": 22.858125,
+      "createdAt": "2022-06-23T22:53:26.224Z"
+    },
+    {
+      "id": null,
+      "name": "jenny",
+      "email": "codepath@org",
+      "order": [
+        {
+          "itemId": 1,
+          "quantity": 2
+        },
+        {
+          "itemId": 3,
+          "quantity": 3
+        }
+      ],
+      "total": 22.858125,
+      "createdAt": "2022-06-23T22:53:56.459Z"
+    },
+    {
+      "id": null,
+      "name": "adsf",
+      "email": "asfgd",
+      "order": [
+        {
+          "itemId": 1,
+          "quantity": 3
+        },
+        {
+          "itemId": 3,
+          "quantity": 2
+        }
+      ],
+      "total": 18.683124999999997,
+      "createdAt": "2022-06-23T23:11:20.544Z"
+    }
+  ]
 }
