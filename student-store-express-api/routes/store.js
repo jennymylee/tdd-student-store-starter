@@ -14,6 +14,31 @@ router.get("/store", async (req, res, next) => {
     next(err);
   }
 });
+// list all purchases
+router.get("/purchases", async (req, res, next) => {
+  try {
+    // console.log("in here");
+    const purchases = await Store.listPurchases();
+    res.status(200).json({ purchases });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// fetch single purchase
+router.get("/purchases/:purchaseId", async (req, res, next) => {
+  try {
+    console.log("in product route");
+    const purchaseId = req.params.purchaseId;
+    const purchase = await Store.fetchPurchaseById(purchaseId);
+    if (!purchase) {
+      throw new NotFoundError("Order not found");
+    }
+    res.status(200).json({ purchase });
+  } catch (err) {
+    next(err);
+  }
+});
 
 // fetch single transaction
 router.get("/store/:productId", async (req, res, next) => {
@@ -30,7 +55,7 @@ router.get("/store/:productId", async (req, res, next) => {
   }
 });
 
-// create new purchsse order
+// create new purchase order
 router.post("/store", async (req, res, next) => {
   try {
     const shoppingCart = req.body.shoppingCart;

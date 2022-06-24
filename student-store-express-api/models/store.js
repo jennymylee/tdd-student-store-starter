@@ -7,6 +7,23 @@ class Store {
     const products = storage.get("products").value();
     return products;
   }
+  static listPurchases() {
+    // list all items in the products array
+    const purchases = storage.get("purchases").value();
+    return purchases;
+  }
+
+  static fetchPurchaseById(purchaseId) {
+    // fetch a single product
+    console.log("fetch");
+    const purchase = storage
+      .get("purchases")
+      .find({ id: Number(purchaseId) })
+      .value();
+
+    console.log(purchase);
+    return purchase;
+  }
 
   static fetchProductById(itemId) {
     // fetch a single product
