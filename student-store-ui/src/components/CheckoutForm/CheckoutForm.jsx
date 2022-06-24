@@ -1,7 +1,5 @@
 import * as React from "react";
 import "./CheckoutForm.css";
-import axios from "axios";
-import Contact from "../Contact/Contact";
 
 export default function CheckoutForm({
   isOpen,
@@ -9,30 +7,22 @@ export default function CheckoutForm({
   checkoutForm,
   handleOnCheckoutFormChange,
   handleOnSubmitCheckoutForm,
+  setCheckoutFormSubmitSuccess,
+  checkoutFormSubmitSuccess,
+  receipt,
+  setReceipt,
+  products,
 }) {
-  //   console.log(handleOnCheckoutFormChange);
-  //   console.log(handleOnSubmitCheckoutForm);
-  //   const [error, setError] = React.useState("");
-  //   const [name, setName] = React.useState("");
-  //   const [email, setEmail] = React.useState("");
-  //   console.log("checkout form", checkoutForm);
-  //   const handleOnSubmit = () => {
-  //     if (shoppingCart.length) {
-  //       setError("No cart or items in cart found to check out.");
-  //     }
-  //   };
+  const getProductNameAndPrice = (itemId) => {
+    for (let i = 0; i < products.length; i++) {
+      if (itemId == products[i].id) {
+        return [products[i].name, products[i].price];
+      }
+    }
+  };
 
-  //   const handleOnFormFieldChange = (change) => {
-  //     console.log("change", change.target.value);
-  //     if (change.target.name == "name") {
-  //       setName(change.target.value);
-  //       handleOnCheckoutFormChange("name", change.target.value);
-  //     }
-  //     if (change.target.name == "email") {
-  //       setEmail(change.target.value);
-  //       handleOnCheckoutFormChange("email", change.target.value);
-  //     }
-  //   };
+  console.log("ro", receipt.order);
+  const [hasCheckedOut, setHasCheckedOut] = React.useState(false);
   return (
     <div className="checkout-form">
       <h1 className="cf-title">Payment Info</h1>
@@ -70,10 +60,64 @@ export default function CheckoutForm({
       <button
         type="button"
         className="checkout-button"
-        onClick={() => handleOnSubmitCheckoutForm()}
+        onClick={() => {
+          handleOnSubmitCheckoutForm();
+          setHasCheckedOut(!hasCheckedOut);
+        }}
       >
         Checkout
       </button>
+
+      <h1 className="ci-title">Checkout Info</h1>
+      {hasCheckedOut == false && (
+        <p className="ci-false-body">
+          A confirmation email will be sent to you so that you can confirm this
+          order. Once you have confirmed the order, it will be delivered to your
+          dorm room.
+        </p>
+      )}
+      {hasCheckedOut && checkoutFormSubmitSuccess && (
+        <>
+          <p className="sucess">Success!</p>
+          <p className="ci-true-body">
+            <b>Receipt</b>
+            <br />
+            Showing receipt for {receipt.name} available at
+            {receipt.email}:<br />
+            {receipt.order &&
+              receipt.order.map((ord, i) => (
+                <li key={i}>
+                  {ord.quantity} total {getProductNameAndPrice(ord.itemId)[0]}{" "}
+                  purchased at a cost of $
+                  {getProductNameAndPrice(ord.itemId)[1]} for a total cost of $
+                  {(
+                    ord.quantity * getProductNameAndPrice(ord.itemId)[1]
+                  ).toFixed(2)}
+                  .
+                </li>
+              ))}
+            <li>
+              Before taxes, the subtotal was $
+              {(receipt.total / 1.0875).toFixed(2)}
+            </li>
+            <li>
+              After taxes and fees were applied, the total comes out to $
+              {(receipt.total * 1).toFixed(2)}
+            </li>
+          </p>
+
+          <button
+            type="button"
+            className="exit-button"
+            onClick={() => {
+              setCheckoutFormSubmitSuccess(!checkoutFormSubmitSuccess);
+              setHasCheckedOut(!hasCheckedOut);
+            }}
+          >
+            Exit
+          </button>
+        </>
+      )}
     </div>
   );
 }

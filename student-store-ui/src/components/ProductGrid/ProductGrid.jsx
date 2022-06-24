@@ -33,7 +33,7 @@ export default function ProductGrid({
     setSearchValue("");
   }, [currentTab]);
   return (
-    <div className="product-grid">
+    <div id="buy-now" className="product-grid">
       <div className="sub-navbar">
         <div className="sn-content">
           <div className="sn-row">

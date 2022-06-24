@@ -7,10 +7,18 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nv-content">
         <Logo />
-        <p className="nav-link">Home</p>
-        <p className="nav-link">About Us</p>
-        <p className="nav-link">Contact Us</p>
-        <p className="nav-link">Buy Now</p>
+        <a href="#home" className="nav-link">
+          Home
+        </a>
+        <a href="#about" className="nav-link">
+          About Us
+        </a>
+        <a href="#contact-us" className="nav-link">
+          Contact Us
+        </a>
+        <a href="#buy-now" className="nav-link">
+          Buy Now
+        </a>
       </div>
     </nav>
   );

@@ -15,7 +15,7 @@ export default function Home({
   getQuantity,
 }) {
   return (
-    <div className="home">
+    <div id="home" className="home">
       <Hero />
 
       <ProductGrid

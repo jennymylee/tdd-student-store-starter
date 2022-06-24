@@ -11,6 +11,10 @@ export default function Sidebar({
   handleOnCheckoutFormChange,
   handleOnSubmitCheckoutForm,
   handleOnToggle,
+  setCheckoutFormSubmitSuccess,
+  checkoutFormSubmitSuccess,
+  receipt,
+  setReceipt,
 }) {
   return (
     <section className="sidebar">
@@ -46,6 +50,11 @@ export default function Sidebar({
             checkoutForm={checkoutForm}
             handleOnCheckoutFormChange={handleOnCheckoutFormChange}
             handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+            setCheckoutFormSubmitSuccess={setCheckoutFormSubmitSuccess}
+            checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
+            receipt={receipt}
+            setReceipt={setReceipt}
+            products={products}
           />
         </div>
       )}

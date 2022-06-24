@@ -19,7 +19,10 @@ export default function App() {
   let [shoppingCart, setShoppingCart] = React.useState([]);
   //might change checkoutForm later
   let [checkoutForm, setCheckoutForm] = React.useState({ name: "", email: "" });
+  let [checkoutFormSubmitSuccess, setCheckoutFormSubmitSuccess] =
+    React.useState(false);
 
+  let [receipt, setReceipt] = React.useState({});
   React.useEffect(() => {
     axios
       .get("http://localhost:3001/store")
@@ -46,26 +49,17 @@ export default function App() {
   };
 
   const handleAddItemToCart = (productId) => {
-    let scCopy = shoppingCart;
-    let scCopy2 = shoppingCart;
-    for (var i = 0; i < shoppingCart.length; i++) {
-      if (shoppingCart[i].itemId == productId) {
-        let newSC = shoppingCart
-          .slice(0, i)
-          .concat([
-            { itemId: productId, quantity: shoppingCart[i].quantity + 1 },
-          ]);
-        newSC = newSC.concat(scCopy.slice(i + 1));
-        setShoppingCart(newSC);
-        console.log("it is in", newSC);
-        return;
-      }
+    console.log("this is shopping cart", shoppingCart);
+    let item = shoppingCart.find((x) => x.itemId === productId);
+
+    if (item) {
+      item.quantity++;
+      setShoppingCart([...shoppingCart]);
+    } else {
+      setShoppingCart([...shoppingCart, { itemId: productId, quantity: 1 }]);
     }
-    scCopy.push({ itemId: productId, quantity: 1 });
-    setShoppingCart(scCopy);
-    console.log("add", shoppingCart);
-    //  It should add the price of the product to the total price of the shoppingCart.
   };
+
   const handleRemoveItemFromCart = (productId) => {
     let scCopy = shoppingCart;
     let scCopy2 = shoppingCart;
@@ -95,7 +89,7 @@ export default function App() {
 
   const handleOnSubmitCheckoutForm = () => {
     axios
-      .post("http://localhost:3001/store/checkout", {
+      .post("http://localhost:3001/store", {
         user: { name: checkoutForm.name, email: checkoutForm.email },
         shoppingCart: shoppingCart,
       })
@@ -103,10 +97,17 @@ export default function App() {
         setShoppingCart([]);
         setCheckoutForm({ email: "", name: "" });
         console.log("post response", response);
+        if (response.status == 201) {
+          console.log("in app receipt", response.data.purchase);
+          setCheckoutFormSubmitSuccess(true);
+
+          setReceipt({ ...response.data.purchase });
+        }
       })
       .catch((e) => {
         setError(e);
         console.log(e);
+        setCheckoutFormSubmitSuccess(false);
       });
   };
 
@@ -128,6 +129,10 @@ export default function App() {
                     handleOnCheckoutFormChange={handleOnCheckoutFormChange}
                     handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
                     handleOnToggle={handleOnToggle}
+                    setCheckoutFormSubmitSuccess={setCheckoutFormSubmitSuccess}
+                    checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
+                    receipt={receipt}
+                    setReceipt={setReceipt}
                   />
                   <Home
                     products={products}
@@ -153,6 +158,10 @@ export default function App() {
                     handleOnCheckoutFormChange={handleOnCheckoutFormChange}
                     handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
                     handleOnToggle={handleOnToggle}
+                    setCheckoutFormSubmitSuccess={setCheckoutFormSubmitSuccess}
+                    checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
+                    receipt={receipt}
+                    setReceipt={setReceipt}
                   />
                   <Hero />
                   <SubNavbar />

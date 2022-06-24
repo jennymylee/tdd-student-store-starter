@@ -3,6 +3,7 @@ import "./ShoppingCart.css";
 
 export default function ShoppingCart({ isOpen, products, shoppingCart }) {
   console.log("sc", shoppingCart);
+  const [subtotal, setSubtotal] = React.useState(0);
 
   const getProductNameAndPrice = (itemId) => {
     for (let i = 0; i < products.length; i++) {
@@ -11,6 +12,19 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
       }
     }
   };
+  React.useEffect(() => {
+    setSubtotal(0);
+    let count = 0;
+    for (let i = 0; i < shoppingCart.length; i++) {
+      let s = 0;
+      let unitPrice = getProductNameAndPrice(shoppingCart[i].itemId)[1];
+      console.log("up", unitPrice);
+      s = shoppingCart[i].quantity * unitPrice;
+      console.log("s", s);
+      count = count + s;
+    }
+    setSubtotal(count);
+  }, [shoppingCart]);
   return (
     <div className="shopping-cart">
       <h1 className="sc-title">Shopping Cart</h1>
@@ -28,7 +42,7 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
             <span className="center">Cost</span>
           </div>
           {shoppingCart.map((item, i) => (
-            <div className="product-row">
+            <div key={i} className="product-row">
               <span className="flex-2 cart-product-name">
                 {getProductNameAndPrice(item.itemId)[0]}
               </span>
@@ -39,6 +53,7 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
                 ${getProductNameAndPrice(item.itemId)[1].toFixed(2)}
               </span>
               <span className="center cart-product-subtotal">
+                $
                 {(
                   item.quantity * getProductNameAndPrice(item.itemId)[1]
                 ).toFixed(2)}
@@ -49,19 +64,21 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
             <span className="receipt-subtotal">Subtotal</span>
             <span></span>
             <span></span>
-            <span className="subtotal">$999.00</span>
+            <span className="subtotal">${subtotal.toFixed(2)}</span>
           </div>
           <div className="receipt-taxes">
             <span className="receipt-subtotal">Taxes and Fees</span>
             <span></span>
             <span></span>
-            <span className="subtotal">$999.00</span>
+            <span className="subtotal">${(subtotal * 0.0875).toFixed(2)}</span>
           </div>
           <div className="receipt-total">
             <span className="receipt-subtotal">Total</span>
             <span></span>
             <span></span>
-            <span className="total-price">$999.00</span>
+            <span className="total-price">
+              ${(subtotal + subtotal * 0.0875).toFixed(2)}
+            </span>
           </div>
         </div>
       )}
