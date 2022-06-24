@@ -15,6 +15,7 @@ export default function Sidebar({
   checkoutFormSubmitSuccess,
   receipt,
   setReceipt,
+  error,
 }) {
   return (
     <section className="sidebar">
@@ -55,6 +56,7 @@ export default function Sidebar({
             receipt={receipt}
             setReceipt={setReceipt}
             products={products}
+            error={error}
           />
         </div>
       )}

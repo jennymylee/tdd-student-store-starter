@@ -88,6 +88,7 @@ export default function App() {
   };
 
   const handleOnSubmitCheckoutForm = () => {
+    setError("");
     axios
       .post("http://localhost:3001/store", {
         user: { name: checkoutForm.name, email: checkoutForm.email },
@@ -105,8 +106,8 @@ export default function App() {
         }
       })
       .catch((e) => {
-        setError(e);
-        console.log(e);
+        setError(e.response.data.error.message);
+        console.log(e.response.data.error.message);
         setCheckoutFormSubmitSuccess(false);
       });
   };
@@ -133,6 +134,7 @@ export default function App() {
                     checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
                     receipt={receipt}
                     setReceipt={setReceipt}
+                    error={error}
                   />
                   <Home
                     products={products}
@@ -162,6 +164,7 @@ export default function App() {
                     checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
                     receipt={receipt}
                     setReceipt={setReceipt}
+                    error={error}
                   />
                   <Hero />
                   <SubNavbar />

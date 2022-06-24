@@ -63,8 +63,14 @@
 }
 
 .ci-true-body,
-.sucess {
+.success {
   color: white;
+  width: 100%;
+  font-size: 18px;
+}
+
+.error {
+  color: red;
   width: 100%;
   font-size: 18px;
 }

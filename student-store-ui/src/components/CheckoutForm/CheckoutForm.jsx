@@ -12,6 +12,7 @@ export default function CheckoutForm({
   receipt,
   setReceipt,
   products,
+  error,
 }) {
   const getProductNameAndPrice = (itemId) => {
     for (let i = 0; i < products.length; i++) {
@@ -27,21 +28,6 @@ export default function CheckoutForm({
     <div className="checkout-form">
       <h1 className="cf-title">Payment Info</h1>
       <div className="input-field">
-        <label className="label">Name</label>
-        <div className="control">
-          <input
-            type="text"
-            name="name"
-            placeholder="Student Name"
-            value={checkoutForm.name}
-            onChange={(evt) =>
-              handleOnCheckoutFormChange("name", evt.target.value)
-            }
-            className="checkout-form-input"
-          ></input>
-        </div>
-      </div>
-      <div className="input-field">
         <label className="label">Email</label>
         <div className="control">
           <input
@@ -56,13 +42,32 @@ export default function CheckoutForm({
           ></input>
         </div>
       </div>
-
+      <div className="input-field">
+        <label className="label">Name</label>
+        <div className="control">
+          <input
+            type="text"
+            name="name"
+            placeholder="Student Name"
+            value={checkoutForm.name}
+            onChange={(evt) =>
+              handleOnCheckoutFormChange("name", evt.target.value)
+            }
+            className="checkout-form-input"
+          ></input>
+        </div>
+      </div>
+      {hasCheckedOut && checkoutFormSubmitSuccess == false && (
+        <p className="error">Error: {error}</p>
+      )}
       <button
         type="button"
         className="checkout-button"
         onClick={() => {
           handleOnSubmitCheckoutForm();
-          setHasCheckedOut(!hasCheckedOut);
+          if (!error) {
+            setHasCheckedOut(!hasCheckedOut);
+          }
         }}
       >
         Checkout
@@ -76,9 +81,16 @@ export default function CheckoutForm({
           dorm room.
         </p>
       )}
+      {hasCheckedOut && checkoutFormSubmitSuccess == false && (
+        <p className="ci-false-body">
+          A confirmation email will be sent to you so that you can confirm this
+          order. Once you have confirmed the order, it will be delivered to your
+          dorm room.
+        </p>
+      )}
       {hasCheckedOut && checkoutFormSubmitSuccess && (
         <>
-          <p className="sucess">Success!</p>
+          <p className="success">Success!</p>
           <p className="ci-true-body">
             <b>Receipt</b>
             <br />
