@@ -281,11 +281,11 @@ The following specifications were met on the Express backend and the React front
       - [x] It should then send a JSON response back to the client with the new purchase like so: `{ "purchase": purchase }`. The response should have a `201` status code for a resource created action.
 
 
-### Reflection
+### Reflection Week 2
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-  The topics discussed in your labs did prepare me to complete the assignment. At first, I felt unprepared to send a GET Request using axios, but my podmates were able to help me out.
+  The topics discussed in my labs did prepare me to complete the assignment. At first, I felt unprepared to send a GET Request using axios, but my podmates were able to help me out.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
@@ -294,6 +294,22 @@ The following specifications were met on the Express backend and the React front
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
   Regarding my project demo, during the first few takes, most of my features worked as intended. While recording, I noticed that I did not set a default image for my backdrop image in the popups. I added this feature before recording my final take. I noticed that some of my peers added a nav bar to their websites; This is something I would like to implement in the future.
+  
+  
+### Reflection Week 3
+
+* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
+
+  The topics discussed in my labs did prepare me to complete the assignment. At first, I felt unprepared to complete the post request/receipt feature, but my podmates and the TAs were able to help me out.
+
+* If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
+  
+  If I had more time, I would complete the stretch remaining features and refactor my code to make it cleaner and more efficient.
+
+* Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
+
+  Regarding my project demo, I made sure to test everything prior to presenting, so everything went as planned. I noticed that my peers implemented more stretch features and made improvements to their UIs; this is something that I would like to try later on.
+
 
 ### Open-source libraries used
 
