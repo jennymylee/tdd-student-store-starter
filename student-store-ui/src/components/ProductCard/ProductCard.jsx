@@ -11,9 +11,18 @@ export default function ProductCard({
   showDescription,
   isFetching,
   setIsFetching,
+  checkoutFormSubmitSuccess,
 }) {
   const [currentQuantity, setCurrentQuantity] = React.useState(quantity);
-
+  React.useEffect(
+    () => {
+      console.log("check out success");
+      if (checkoutFormSubmitSuccess == false) {
+        setCurrentQuantity(0);
+      }
+    },
+    { checkoutFormSubmitSuccess }
+  );
   return (
     <div className="product-card">
       <div className="media">

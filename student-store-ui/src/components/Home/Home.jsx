@@ -13,6 +13,7 @@ export default function Home({
   isFetching,
   setIsFetching,
   getQuantity,
+  checkoutFormSubmitSuccess,
 }) {
   return (
     <div id="home" className="home">
@@ -25,6 +26,7 @@ export default function Home({
         isFetching={isFetching}
         setIsFetching={setIsFetching}
         getQuantity={getQuantity}
+        checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
       />
       <About />
       <Contact />

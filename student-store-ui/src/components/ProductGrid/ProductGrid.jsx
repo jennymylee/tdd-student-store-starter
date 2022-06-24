@@ -9,6 +9,7 @@ export default function ProductGrid({
   isFetching,
   setIsFetching,
   getQuantity,
+  checkoutFormSubmitSuccess,
 }) {
   const [currentTab, setCurrentTab] = React.useState("all");
   const [searchValue, setSearchValue] = React.useState("");
@@ -147,6 +148,7 @@ export default function ProductGrid({
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
+                checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
               />
             ))}
           {currentTab == "clothing" &&
@@ -161,6 +163,7 @@ export default function ProductGrid({
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
+                checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
               />
             ))}
           {currentTab == "food" &&
@@ -175,6 +178,7 @@ export default function ProductGrid({
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
+                checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
               />
             ))}
           {currentTab == "accessories" &&
@@ -189,6 +193,7 @@ export default function ProductGrid({
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
+                checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
               />
             ))}
           {currentTab == "tech" &&
@@ -203,6 +208,7 @@ export default function ProductGrid({
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
+                checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
               />
             ))}
           {currentTab == "" &&
@@ -217,6 +223,7 @@ export default function ProductGrid({
                 showDescription={false}
                 isFetching={isFetching}
                 setIsFetching={setIsFetching}
+                checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
               />
             ))}
           {searchProducts.length == 0 && (

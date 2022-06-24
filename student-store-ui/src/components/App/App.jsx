@@ -101,7 +101,6 @@ export default function App() {
         if (response.status == 201) {
           console.log("in app receipt", response.data.purchase);
           setCheckoutFormSubmitSuccess(true);
-
           setReceipt({ ...response.data.purchase });
         }
       })
@@ -143,6 +142,7 @@ export default function App() {
                     handleAddItemToCart={handleAddItemToCart}
                     handleRemoveItemFromCart={handleRemoveItemFromCart}
                     getQuantity={getQuantity}
+                    checkoutFormSubmitSuccess={checkoutFormSubmitSuccess}
                   />
                 </>
               }
