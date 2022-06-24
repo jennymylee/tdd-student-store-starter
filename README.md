@@ -7,6 +7,9 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 #### Week 2 Frontend Gif
 ![](walkthrough.gif)
 
+#### Week 3 Frontend Gif
+![](walkthrough2.gif)
+
 ### Application Features
 
 #### Core Features
