@@ -21,15 +21,23 @@ class Store {
   }
 
   static createNewPurchase(shoppingCart, user) {
-    if (!shoppingCart || !user) {
-      throw new BadRequestError("either shopping art or user is missing");
+    console.log("sc and u", shoppingCart, user);
+    console.log(1111, user.name);
+    if (shoppingCart.length == 0 || user.name == "" || user.email == "") {
+      console.log("inside");
+      throw new BadRequestError("either shopping cart or user is missing");
     }
     console.log("shopping cart before", shoppingCart.length);
 
-    const noDups = new Set(shoppingCart);
+    var seen = {};
+    var hasDuplicates = shoppingCart.some(function (currentObject) {
+      return (
+        seen.hasOwnProperty(currentObject.itemId) ||
+        (seen[currentObject.itemId] = false)
+      );
+    });
 
-    if (shoppingCart.length !== noDups.size) {
-      console.log("shopping cart after", noDups.size);
+    if (hasDuplicates) {
       throw new BadRequestError("there are duplicate items in shopping cart");
     }
 
@@ -50,11 +58,12 @@ class Store {
     }
 
     // add tax
-    calculatedTotal = calculatedTotal + 1.0875 * calculatedTotal;
-
+    console.log("CALC B4 SUBTAX:", calculatedTotal);
+    calculatedTotal = calculatedTotal + 0.0875 * calculatedTotal;
+    console.log("CALC AFTER SUBTAX:", calculatedTotal);
     let dateAndTime = new Date().toISOString();
     let newPurchase = {
-      id: storage.get("purchases").length + 1,
+      id: storage.get("purchases").value().length + 1,
       name: user.name,
       email: user.email,
       order: shoppingCart,

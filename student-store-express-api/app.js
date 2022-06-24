@@ -10,7 +10,7 @@ app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.json());
 
-app.use("/store", router);
+app.use("/", router);
 
 app.get("/", (req, res, next) => {
   res.status(200).json({ ping: "pong" });
